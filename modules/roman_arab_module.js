@@ -95,14 +95,17 @@ const arabToRoman = function (numArab) {
   let numRomano = ''
   let numAux = numArab
 
-  // Empezamos por las unidades de millar y vamos bajando descontado
-  // y formando el numero romano requerido
-  Object.keys(dicArabeRomano).forEach(i => {
-    while (numAux >= dicArabeRomano[i]) {
-      numRomano += i
-      numAux -= dicArabeRomano[i]
-    }
-  })
+  if (numArab >= 1 && numArab < 3999) {
+    // Empezamos por las unidades de millar y vamos bajando descontado
+    // y formando el numero romano requerido
+    Object.keys(dicArabeRomano).forEach(i => {
+      while (numAux >= dicArabeRomano[i]) {
+        numRomano += i
+        numAux -= dicArabeRomano[i]
+      }
+    })
+  } else numRomano = 'Numero fuera del rango'
+
   return numRomano
 }
 
@@ -126,14 +129,9 @@ const romanToArab = function (romanString) {
 
   return numArab
 }
-const n1 = 'XXI'
-const n2 = 'MMCLIX'
 
-console.log(n1, checkRoman(n1))
-console.log(n2, checkRoman(n2))
-
-console.log(n1, romanToArab(n1))
-console.log(n2, romanToArab(n2))
-
-console.log(21, arabToRoman(21))
-console.log(2159, arabToRoman(2159))
+module.exports = {
+  checkRoman,
+  arabToRoman,
+  romanToArab,
+}

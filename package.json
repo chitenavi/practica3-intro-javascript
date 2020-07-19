@@ -1,0 +1,32 @@
+{
+  "name": "practica3-intro-javascript",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Practica 3 - Introduccion JavaScript KeepCoding BootCamp Web IX",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chitenavi/practica3-intro-javascript.git"
+  },
+  "keywords": [
+    "JS"
+  ],
+  "author": "Ivan Chinea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chitenavi/practica3-intro-javascript/issues"
+  },
+  "homepage": "https://github.com/chitenavi/practica3-intro-javascript#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5"
+  }
+}

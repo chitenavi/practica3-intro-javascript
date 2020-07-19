@@ -1,5 +1,5 @@
 /node_modules
 .eslintrc.js
-package.json
-package-lock.json
 .prettierrc
+data_numbers_out_async.txt
+data_numbers_out_sync.txt

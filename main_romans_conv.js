@@ -1,9 +1,10 @@
-import fs from 'fs'
-
-import * as convRomArab from './modules/roman_arab_module.js'
+// import fs from 'fs'
+// import * as convRomArab from './modules/roman_arab_module.mjs'
+const fs = require('fs')
+const convRomArab = require('./modules/roman_arab_module')
 
 const operarData = function (data) {
-  /* Transformamos a un array de cada número, 
+  /* Transformamos a un array de cada número,
      salto de linea */
   const arrayDatos = data.split('\r\n')
 
@@ -13,9 +14,9 @@ const operarData = function (data) {
   for (let i = 0; i < arrayDatos.length; i += 1) {
     if (arrayDatos[i]) {
       dataOut += `${arrayDatos[i]}`
-      if (convRomArab.checkRoman(arrayDatos[i]))
+      if (convRomArab.checkRoman(arrayDatos[i])) {
         dataOut += ` => ${convRomArab.romanToArab(arrayDatos[i])}`
-      else if (Number(arrayDatos[i])) {
+      } else if (Number(arrayDatos[i])) {
         const romano = convRomArab.arabToRoman(arrayDatos[i])
         if (romano === '') dataOut += ' => !Error, número incorrecto'
         else dataOut += ` => ${romano}`

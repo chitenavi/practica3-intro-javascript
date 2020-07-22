@@ -4,18 +4,17 @@ module.exports = {
     es2020: true,
     node: true,
   },
-  extends: ['airbnb-base', 'prettier'],
-  plugins: ['prettier'],
+  extends: ['airbnb-base'],
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
   rules: {
     strict: 1,
-    'prettier/prettier': ['error'],
-    semi: ['error', 'never'],
     'no-console': 'off',
+    'linebreak-style': ['error', 'windows'],
+    semi: ['error', 'never'],
+    'arrow-parens': ['error', 'as-needed'],
     'func-names': ['error', 'never'],
-    'import/extensions': ['error', 'always'],
   },
 }

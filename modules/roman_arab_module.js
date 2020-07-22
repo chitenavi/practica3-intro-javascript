@@ -24,11 +24,8 @@ const checkRoman = function (romanString) {
       /* Si la letra no pertenece al numero romano o
          aparezca mas de 4 veces, no es romano */
       if (
-        !Object.prototype.hasOwnProperty.call(
-          DIC_ARABE_ROMANO,
-          romanString[i],
-        ) ||
-        objCont[romanString[i]] > 4
+        !Object.prototype.hasOwnProperty.call(DIC_ARABE_ROMANO, romanString[i])
+        || objCont[romanString[i]] > 4
       ) {
         esRomano = false
         break
@@ -42,13 +39,11 @@ const checkRoman = function (romanString) {
       /* Observamos que se cumple las veces de repeticion
         de cada letra */
       Object.keys(objCont).forEach(key => {
-        if ((key === 'D' || key === 'L' || key === 'V') && objCont[key] > 1)
+        if ((key === 'D' || key === 'L' || key === 'V') && objCont[key] > 1) {
           esRomano = false
-        else if (
-          (key === 'C' || key === 'X' || key === 'I') &&
-          objCont[key] > 3
-        )
+        } else if ((key === 'C' || key === 'X' || key === 'I') && objCont[key] > 3) {
           esRomano = false
+        }
       })
 
       /* Si el número pasa el filtro de lo anterior
@@ -62,22 +57,26 @@ const checkRoman = function (romanString) {
 
             if (nextValue > actualValue) {
               if (
-                romanString[i - 1] === romanString[i] ||
-                DIC_ARABE_ROMANO[romanString[i + 2]] > actualValue
-              )
+                romanString[i - 1] === romanString[i]
+                || DIC_ARABE_ROMANO[romanString[i + 2]] > actualValue
+              ) {
                 esRomano = false
+              }
               switch (romanString[i]) {
                 case 'C':
-                  if (romanString[i + 1] !== 'M' && romanString[i + 1] !== 'D')
+                  if (romanString[i + 1] !== 'M' && romanString[i + 1] !== 'D') {
                     esRomano = false
+                  }
                   break
                 case 'X':
-                  if (romanString[i + 1] !== 'L' && romanString[i + 1] !== 'C')
+                  if (romanString[i + 1] !== 'L' && romanString[i + 1] !== 'C') {
                     esRomano = false
+                  }
                   break
                 case 'I':
-                  if (romanString[i + 1] !== 'X' && romanString[i + 1] !== 'V')
+                  if (romanString[i + 1] !== 'X' && romanString[i + 1] !== 'V') {
                     esRomano = false
+                  }
                   break
                 default:
                   esRomano = false
@@ -132,4 +131,4 @@ const romanToArab = function (romanString) {
   return numArab
 }
 
-export { checkRoman, arabToRoman, romanToArab }
+module.exports = { checkRoman, arabToRoman, romanToArab }

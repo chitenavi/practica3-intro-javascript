@@ -1,10 +1,12 @@
 const J = require('./jugador')
 const BP = require('./baraja_poker')
 
+const { Jugador } = J
+const { BarajaPoker } = BP
 function JuegoPoker(jugador1, jugador2) {
-  this.barajaPok = new BP.BarajaPoker()
-  this.jugador1 = new J.Jugador(jugador1, [])
-  this.jugador2 = new J.Jugador(jugador2, [])
+  this.barajaPok = new BarajaPoker()
+  this.jugador1 = new Jugador(jugador1, [])
+  this.jugador2 = new Jugador(jugador2, [])
 }
 
 JuegoPoker.prototype.repartirCartas = function () {

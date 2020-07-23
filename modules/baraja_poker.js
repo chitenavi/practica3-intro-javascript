@@ -1,5 +1,7 @@
 const C = require('./carta')
 
+const { Carta } = C
+
 function BarajaPoker() {
   const PALO = {
     C: 'clubs',
@@ -17,7 +19,7 @@ function BarajaPoker() {
       que es la que más vale. Esto simplifica la lógica */
   Object.keys(PALO).forEach(palo => {
     for (let i = 0; i < PAR_VALOR.length; i += 1) {
-      const CARTA = new C.Carta(palo, PAR_VALOR[i], i + 2)
+      const CARTA = new Carta(palo, PAR_VALOR[i], i + 2)
       this.baraja.push(CARTA)
     }
   })

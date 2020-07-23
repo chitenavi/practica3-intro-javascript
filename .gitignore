@@ -1,3 +1,5 @@
 /node_modules
 data_numbers_out_async.txt
 data_numbers_out_sync.txt
+poker_result_sync.txt
+poker_result_async.txt

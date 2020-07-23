@@ -1,11 +1,10 @@
-// import fs from 'fs'
-// import * as convRomArab from './modules/roman_arab_module.mjs'
 const fs = require('fs')
-const convRomArab = require('./modules/roman_arab_module')
+
+const convRomArab = require('./modules/roman_arab')
 
 const operarData = function (data) {
   /* Transformamos a un array de cada número,
-     salto de linea */
+     salto de linea en windows */
   const arrayDatos = data.split('\r\n')
 
   /* Operamos y generamos los datos de salida */

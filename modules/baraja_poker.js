@@ -2,6 +2,7 @@ const C = require('./carta')
 
 const { Carta } = C
 
+/* Función constructura de la baraja */
 function BarajaPoker() {
   const PALO = {
     C: 'clubs',
@@ -23,6 +24,7 @@ function BarajaPoker() {
       this.baraja.push(CARTA)
     }
   })
+  // En total array de 52 cartas
 }
 
 BarajaPoker.prototype.mostrarBaraja = function () {
@@ -46,6 +48,8 @@ BarajaPoker.prototype.barajarCartas = function (iteracion = 1) {
 }
 
 BarajaPoker.prototype.repartirMano = function () {
+  /* Extraemos de la barja 5 cartas, con esto aseguramos
+     que cada jugador lleve distintas cartas */
   const mano = []
   for (let i = 0; i < 5; i += 1) {
     mano.push(this.baraja.pop())

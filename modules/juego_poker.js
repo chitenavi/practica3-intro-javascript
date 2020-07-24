@@ -3,6 +3,8 @@ const BP = require('./baraja_poker')
 
 const { Jugador } = J
 const { BarajaPoker } = BP
+
+/* Función constructora del juego del póker */
 function JuegoPoker(jugador1, jugador2) {
   this.barajaPok = new BarajaPoker()
   this.jugador1 = new Jugador(jugador1, [])
@@ -16,6 +18,7 @@ JuegoPoker.prototype.repartirCartas = function () {
 }
 
 JuegoPoker.prototype.jugarPartida = function () {
+  // Jugadas de menor a mayor valor
   const JUGADAS = [
     'carta más alta',
     'pareja',

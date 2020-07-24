@@ -1,3 +1,4 @@
+/* Funcion constructora del jugador */
 function Jugador(nombre, mano) {
   this.nombre = nombre
   this.mano = mano

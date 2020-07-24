@@ -1,16 +1,10 @@
 const DIC_ARABE_ROMANO = {
   M: 1000,
-  CM: 900,
   D: 500,
-  CD: 400,
   C: 100,
-  XC: 90,
   L: 50,
-  XL: 40,
   X: 10,
-  IX: 9,
   V: 5,
-  IV: 4,
   I: 1,
 }
 
@@ -18,10 +12,14 @@ const checkRoman = function (romanString) {
   let esRomano = true
   const objCont = {}
 
-  if (romanString === '' || romanString.includes('MMMM')) esRomano = false
-  else {
+  if (
+    romanString === ''
+    || romanString.includes('MMMM')
+    || romanString.includes('CCCC')
+    || romanString.includes('XXXX')
+  ) { esRomano = false } else {
     for (let i = 0; i < romanString.length; i += 1) {
-      /* Si la letra no pertenece al numero romano o
+      /* Si la letra no pertenece al alfabeto numerico romano o
          aparezca mas de 4 veces, no es romano */
       if (
         !Object.prototype.hasOwnProperty.call(DIC_ARABE_ROMANO, romanString[i])
@@ -41,7 +39,7 @@ const checkRoman = function (romanString) {
       Object.keys(objCont).forEach(key => {
         if ((key === 'D' || key === 'L' || key === 'V') && objCont[key] > 1) {
           esRomano = false
-        } else if ((key === 'C' || key === 'X' || key === 'I') && objCont[key] > 3) {
+        } else if (key === 'I' && objCont[key] > 3) {
           esRomano = false
         }
       })
@@ -94,17 +92,40 @@ const checkRoman = function (romanString) {
 
 const arabToRoman = function (numArab) {
   let numRomano = ''
-  let numAux = numArab
+  const letrasRom = Object.keys(DIC_ARABE_ROMANO).reverse()
 
-  if (numArab >= 1 && numArab < 3999) {
-    // Empezamos por las unidades de millar y vamos bajando descontado
-    // y formando el numero romano requerido
-    Object.keys(DIC_ARABE_ROMANO).forEach(i => {
-      while (numAux >= DIC_ARABE_ROMANO[i]) {
-        numRomano += i
-        numAux -= DIC_ARABE_ROMANO[i]
+  if (numArab >= 1 && numArab <= 3999) {
+    /* Convertimos el numero de entrada a un array,
+       con esto tenemos las unidades de millar, centenas,
+       decenas y unidades */
+    const arrayAux = numArab.toString().split('').reverse()
+    let cadenaAux = ''
+
+    /* Comenzamos por las unidades y formamos el numero romano,
+       el indice de las letras pasa por unidades (I), dentenas (X),
+       centenas (C) y millares (M). Con esto solo queda evaluar
+       cada cifra del numero a convertir */
+
+    for (let i = 0; i < arrayAux.length; i += 1) {
+      if (Number(arrayAux[i]) !== 0) {
+        if (Number(arrayAux[i]) >= 1 && Number(arrayAux[i]) <= 3) {
+          for (let j = 0; j < Number(arrayAux[i]); j += 1) {
+            cadenaAux += letrasRom[i * 2]
+          }
+        } else if (Number(arrayAux[i]) === 4) {
+          cadenaAux += letrasRom[i * 2] + letrasRom[i * 2 + 1]
+        } else if (Number(arrayAux[i]) >= 5 && Number(arrayAux[i]) <= 8) {
+          cadenaAux += letrasRom[i * 2 + 1]
+          for (let j = 0; j < Number(arrayAux[i] % 5); j += 1) {
+            cadenaAux += letrasRom[i * 2]
+          }
+        } else if (Number(arrayAux[i]) === 9) {
+          cadenaAux += letrasRom[i * 2] + letrasRom[i * 2 + 2]
+        }
       }
-    })
+      numRomano = cadenaAux + numRomano
+      cadenaAux = ''
+    }
   }
 
   return numRomano

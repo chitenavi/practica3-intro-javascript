@@ -6,7 +6,7 @@ const { JuegoPoker } = JP
 
 let salida = ''
 
-const juego = new JuegoPoker('Ivan', 'Johana')
+const juego = new JuegoPoker('Manuel', 'Paco')
 juego.repartirCartas()
 
 /* Bucle para forzar las jugadas, dependiendo del resultado
@@ -15,7 +15,7 @@ juego.repartirCartas()
 
 /*
 while (juego.jugador1.evaluarMano()[0] !== 2 || juego.jugador2.evaluarMano()[0] !== 3) {
-  juego = new JuegoPoker('Ivan', 'Johana')
+  juego = new JuegoPoker('Manuel', 'Paco')
   juego.repartirCartas()
 }
 */
@@ -27,10 +27,12 @@ Salida: ${juego.jugarPartida()}\n\n`
 
 console.log(salida)
 
+// Resultados añadidos a fichero de forma asincrona
 fs.appendFile('./poker_result_async.txt', salida, err => {
   if (err) console.error(err)
   else console.log('"./poker_result_async.txt" => partida agredada con éxito')
 })
 
+// Resultados añadidos a fichero de forma sincrona
 fs.appendFileSync('./poker_result_sync.txt', salida)
 console.log('"./poker_result_sync.txt" => partida agredada con éxito')
